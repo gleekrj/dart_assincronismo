@@ -65,4 +65,15 @@ class AccountService {
           .add("${DateTime.now()} | Requisição falhou (${account.name})");
     }
   }
+
+  Future<Account?> getAccountById(String id) async {
+    List<Account> listAccounts = await getAll();
+
+    for (Account account in listAccounts) {
+      if (account.id == id) {
+        return account;
+      }
+    }
+    return null;
+  }
 }
